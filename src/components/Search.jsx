@@ -8,8 +8,6 @@ const Search = () => {
   const [query, setQuery] = useState("");
   const [data, setData] = useState(null);
   const [isOpen, setisOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
   let menuRef = useRef();
   const handleInput = (e) => {
     setQuery(e.target.value);
@@ -30,13 +28,9 @@ const Search = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
         const res = await makeRequest.get(`/search/multi?query=${query}`);
         setData(res.data);
-      } catch (err) {
-        setError(true);
-      }
-      setLoading(false);
+      } catch (err) {}
     };
     query && fetchData();
   }, [query]);

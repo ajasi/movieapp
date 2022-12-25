@@ -10,7 +10,7 @@ const Details = () => {
   const type = useParams().type;
   const img = process.env.REACT_APP_IMG_URL;
 
-  const { data, loading, error } = useFetch(`/${type}/${id}`);
+  const { data } = useFetch(`/${type}/${id}`);
   const { data: cast } = useFetch(`/${type}/${id}/credits`);
 
   return (

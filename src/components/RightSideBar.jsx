@@ -4,12 +4,8 @@ import useFetch from "../hooks/useFetch";
 import MiniCard from "./MiniCard";
 
 const RightSideBar = () => {
-  const { data, loading, error } = useFetch(`/movie/top_rated`);
-  const {
-    data: series,
-    loading: loading2,
-    error: error2,
-  } = useFetch(`/tv/top_rated`);
+  const { data } = useFetch(`/movie/top_rated`);
+  const { data: series } = useFetch(`/tv/top_rated`);
 
   return (
     <div className="px-4 hidden xl:flex flex-col">
