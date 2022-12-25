@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import Search from "./Search";
@@ -21,7 +20,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
-  const [user, setUser] = useState(false);
+
   return (
     <nav className="w-full bg-blue/70 backdrop-filter backdrop-blur-sm bg-opacity-20">
       <div className="  flex justify-between items-center  mx-10 py-4 text-white">
@@ -65,24 +64,23 @@ const Header = () => {
               2
             </span>
           </div>
-          {user ? (
-            <div
-              onClick={() => setOpen(true)}
-              className="rounded-full h-8 w-8 bg-black overflow-hidden cursor-pointer"
-            >
-              <img
-                alt=""
-                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-              />
-            </div>
-          ) : (
+
+          <div
+            onClick={() => setOpen(true)}
+            className="rounded-full h-8 w-8 bg-black overflow-hidden cursor-pointer"
+          >
+            <img
+              alt=""
+              src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+            />
+          </div>
+          {/*         
             <div
               onClick={() => setLoginModal(true)}
               className="  bg-white/10 rounded-full flex items-center p-2 cursor-pointer hover:bg-purple hover:border-purple  duration-300"
             >
               <PersonOutlineOutlinedIcon />
-            </div>
-          )}
+            </div> */}
         </div>
       </div>
       {open && <UserProfile open={open} setOpen={setOpen} />}

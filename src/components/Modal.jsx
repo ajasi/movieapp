@@ -14,6 +14,7 @@ const Modal = ({ open, children, onClose }) => {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   if (!open) return null;

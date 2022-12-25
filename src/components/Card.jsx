@@ -1,6 +1,5 @@
 import React from "react";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
-import { Link } from "react-router-dom";
 
 const img = process.env.REACT_APP_IMG_URL;
 
