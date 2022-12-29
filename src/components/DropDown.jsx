@@ -1,16 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 
-const DropDown = ({
-  data,
-  checkBox,
-  type,
-  setSort,
-  genre,
-  setGenre,
-  setYear,
-}) => {
+const DropDown = ({ data, checkBox, type, setSort, genre, setGenre }) => {
   const [open, setOpen] = useState(false);
 
   const isOpen = open;
@@ -25,8 +17,23 @@ const DropDown = ({
     );
   };
 
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [isOpen]);
+
   return (
-    <div className="flex my-3 ">
+    <div className="flex my-3 " ref={menuRef}>
       <div className="relativev">
         <button
           className="text-white bg-gradient-to-b from-white/5 py-3 px-5 rounded-t-xl items-center flex justify-between  min-w-[190px]"
